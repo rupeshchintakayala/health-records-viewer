@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker - Patient Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold flex items-center">
+                <i class="fas fa-heartbeat mr-3"></i>
+                Health Tracker
+            </h1>
+            <p class="text-blue-100 mt-2">Patient Data Management System</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Search Section -->
+        <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Search Patient</h2>
+                <form id="searchForm" class="space-y-4">
+                    <div>
+                        <label for="patientId" class="block text-sm font-medium text-gray-700 mb-2">
+                            Patient ID
+                        </label>
+                        <input 
+                            type="text" 
+                            id="patientId" 
+                            name="patientId"
+                            placeholder="Enter Patient ID (e.g., P001)"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required
+                        >
+                    </div>
+                    <button 
+                        type="submit"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+                    >
+                        <i class="fas fa-search mr-2"></i>
+                        Search Patient
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="hidden text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="text-gray-600 mt-2">Searching...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden max-w-2xl mx-auto">
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
+                    <div>
+                        <h3 class="text-red-800 font-medium">Patient Not Found</h3>
+                        <p class="text-red-600 text-sm mt-1">No patient found with the provided ID. Please check the ID and try again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Results -->
+        <div id="patientResults" class="hidden max-w-4xl mx-auto space-y-6">
+            <!-- Patient Profile Card -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <i class="fas fa-user mr-3"></i>
+                        Patient Profile
+                    </h2>
+                </div>
+                <div id="patientProfile" class="p-6">
+                    <!-- Patient profile content will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Latest Vitals Card -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <i class="fas fa-heartbeat mr-3"></i>
+                        Latest Vitals
+                    </h2>
+                </div>
+                <div id="patientVitals" class="p-6">
+                    <!-- Patient vitals content will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Doctor Notes Card -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4">
+                    <h2 class="text-xl font-semibold flex items-center">
+                        <i class="fas fa-stethoscope mr-3"></i>
+                        Doctor Notes
+                    </h2>
+                </div>
+                <div id="doctorNotes" class="p-6">
+                    <!-- Doctor notes content will be inserted here -->
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-auto">
+        <div class="container mx-auto px-4 py-6 text-center">
+            <p>&copy; 2024 Health Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

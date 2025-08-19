@@ -1,0 +1,153 @@
+[
+  {
+    "patient_id": "P001",
+    "name": "John Smith",
+    "age": 45,
+    "blood_group": "O+",
+    "department": "Cardiology",
+    "address": "123 Main Street, New York, NY 10001",
+    "past_history": "Hypertension, Type 2 Diabetes, Previous MI in 2019",
+    "bp": "140/90",
+    "spo2": "98%",
+    "pr": "72 bpm",
+    "temperature": "98.6°F",
+    "nurse_note": "Patient stable, compliant with medications. Blood pressure slightly elevated.",
+    "nurse_name": "Sarah Johnson, RN",
+    "doctor_notes": [
+      {
+        "date": "2024-01-15",
+        "time": "09:30 AM",
+        "doctor_name": "Dr. Michael Chen",
+        "note": "Patient presents with chest discomfort. EKG shows no acute changes. Continue current medications and schedule follow-up in 2 weeks."
+      },
+      {
+        "date": "2024-01-10",
+        "time": "02:15 PM",
+        "doctor_name": "Dr. Emily Rodriguez",
+        "note": "Routine follow-up for hypertension management. BP well controlled on current regimen. Advised dietary modifications."
+      },
+      {
+        "date": "2024-01-05",
+        "time": "11:45 AM",
+        "doctor_name": "Dr. Michael Chen",
+        "note": "Initial consultation for chest pain evaluation. Ordered stress test and echocardiogram. Patient educated on cardiac risk factors."
+      }
+    ]
+  },
+  {
+    "patient_id": "P002",
+    "name": "Maria Garcia",
+    "age": 32,
+    "blood_group": "A-",
+    "department": "Obstetrics & Gynecology",
+    "address": "456 Oak Avenue, Los Angeles, CA 90210",
+    "past_history": "No significant medical history. Previous normal delivery in 2020.",
+    "bp": "110/70",
+    "spo2": "99%",
+    "pr": "68 bpm",
+    "temperature": "98.2°F",
+    "nurse_note": "Patient doing well postpartum. Vital signs stable. Breastfeeding successfully.",
+    "nurse_name": "Jennifer Lee, RN",
+    "doctor_notes": [
+      {
+        "date": "2024-01-14",
+        "time": "10:00 AM",
+        "doctor_name": "Dr. Lisa Thompson",
+        "note": "Postpartum day 2. Patient recovering well from vaginal delivery. No complications noted. Discharge planned for tomorrow."
+      },
+      {
+        "date": "2024-01-12",
+        "time": "08:30 PM",
+        "doctor_name": "Dr. Robert Kim",
+        "note": "Admitted in active labor. Normal vaginal delivery of healthy baby boy at 39 weeks gestation. No complications during delivery."
+      }
+    ]
+  },
+  {
+    "patient_id": "P003",
+    "name": "Robert Johnson",
+    "age": 67,
+    "blood_group": "B+",
+    "department": "Orthopedics",
+    "address": "789 Pine Street, Chicago, IL 60601",
+    "past_history": "Osteoarthritis, Previous hip replacement surgery in 2018, Mild COPD",
+    "bp": "135/85",
+    "spo2": "96%",
+    "pr": "78 bpm",
+    "temperature": "99.1°F",
+    "nurse_note": "Post-operative day 1 after knee replacement. Pain managed with medication. Encouraging mobility.",
+    "nurse_name": "Mark Davis, RN",
+    "doctor_notes": [
+      {
+        "date": "2024-01-16",
+        "time": "07:00 AM",
+        "doctor_name": "Dr. James Wilson",
+        "note": "Post-op day 1 total knee replacement. Surgical site clean and dry. Patient tolerating physical therapy well. Continue current pain management protocol."
+      },
+      {
+        "date": "2024-01-15",
+        "time": "01:30 PM",
+        "doctor_name": "Dr. James Wilson",
+        "note": "Successful total knee replacement surgery completed. No intraoperative complications. Patient stable in recovery."
+      },
+      {
+        "date": "2024-01-10",
+        "time": "03:00 PM",
+        "doctor_name": "Dr. James Wilson",
+        "note": "Pre-operative consultation for total knee replacement. Patient cleared for surgery. Discussed risks and benefits."
+      }
+    ]
+  },
+  {
+    "patient_id": "P004",
+    "name": "Lisa Chen",
+    "age": 28,
+    "blood_group": "AB+",
+    "department": "Emergency Medicine",
+    "address": "321 Elm Street, Miami, FL 33101",
+    "past_history": "Asthma, Seasonal allergies",
+    "bp": "118/75",
+    "spo2": "97%",
+    "pr": "85 bpm",
+    "temperature": "100.4°F",
+    "nurse_note": "Patient presented with acute asthma exacerbation. Responded well to nebulizer treatments. Symptoms improving.",
+    "nurse_name": "Amanda White, RN",
+    "doctor_notes": [
+      {
+        "date": "2024-01-16",
+        "time": "11:15 AM",
+        "doctor_name": "Dr. Kevin Park",
+        "note": "Patient presented with acute asthma exacerbation triggered by upper respiratory infection. Treated with albuterol nebulizers and oral steroids. Symptoms improved significantly. Discharge with inhaler and steroid course."
+      }
+    ]
+  },
+  {
+    "patient_id": "P005",
+    "name": "David Brown",
+    "age": 55,
+    "blood_group": "O-",
+    "department": "Gastroenterology",
+    "address": "654 Maple Drive, Seattle, WA 98101",
+    "past_history": "GERD, Previous peptic ulcer disease, Family history of colon cancer",
+    "bp": "125/80",
+    "spo2": "98%",
+    "pr": "70 bpm",
+    "temperature": "98.8°F",
+    "nurse_note": "Patient stable post-colonoscopy. No immediate complications. Clear liquids tolerated well.",
+    "nurse_name": "Rachel Green, RN",
+    "doctor_notes": [
+      {
+        "date": "2024-01-15",
+        "time": "02:45 PM",
+        "doctor_name": "Dr. Steven Martinez",
+        "note": "Screening colonoscopy completed successfully. Two small polyps removed and sent for pathology. Recommend repeat colonoscopy in 3 years unless pathology indicates otherwise."
+      },
+      {
+        "date": "2024-01-08",
+        "time": "09:00 AM",
+        "doctor_name": "Dr. Steven Martinez",
+        "note": "Pre-procedure consultation for screening colonoscopy. Patient counseled on procedure and prep instructions provided."
+      }
+    ]
+  }
+]
