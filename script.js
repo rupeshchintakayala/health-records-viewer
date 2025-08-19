@@ -11,6 +11,13 @@ const patientProfile = document.getElementById('patientProfile');
 const patientVitals = document.getElementById('patientVitals');
 const doctorNotes = document.getElementById('doctorNotes');
 
+// Add Patient Modal elements
+const addPatientBtn = document.getElementById('addPatientBtn');
+const addPatientModal = document.getElementById('addPatientModal');
+const closeModal = document.getElementById('closeModal');
+const cancelAddPatient = document.getElementById('cancelAddPatient');
+const addPatientForm = document.getElementById('addPatientForm');
+
 // Load patient data when page loads
 document.addEventListener('DOMContentLoaded', async function() {
     try {
@@ -37,6 +44,32 @@ searchForm.addEventListener('submit', function(e) {
     }
     
     searchPatient(patientId);
+});
+
+// Modal event listeners
+addPatientBtn.addEventListener('click', function() {
+    showAddPatientModal();
+});
+
+closeModal.addEventListener('click', function() {
+    hideAddPatientModal();
+});
+
+cancelAddPatient.addEventListener('click', function() {
+    hideAddPatientModal();
+});
+
+// Close modal when clicking outside
+addPatientModal.addEventListener('click', function(e) {
+    if (e.target === addPatientModal) {
+        hideAddPatientModal();
+    }
+});
+
+// Handle add patient form submission
+addPatientForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    addNewPatient();
 });
 
 // Search for patient by ID
@@ -330,3 +363,132 @@ patientIdInput.addEventListener('input', function(e) {
     // Convert to uppercase as user types
     e.target.value = e.target.value.toUpperCase();
 });
+
+// Modal functions
+function showAddPatientModal() {
+    addPatientModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    // Focus on first input
+    document.getElementById('newPatientId').focus();
+}
+
+function hideAddPatientModal() {
+    addPatientModal.classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+    // Reset form
+    addPatientForm.reset();
+}
+
+// Add new patient function
+function addNewPatient() {
+    const formData = new FormData(addPatientForm);
+    
+    // Validate required fields
+    const requiredFields = ['patient_id', 'name', 'age', 'blood_group', 'department', 'address'];
+    const missingFields = [];
+    
+    for (const field of requiredFields) {
+        if (!formData.get(field) || formData.get(field).trim() === '') {
+            missingFields.push(field);
+        }
+    }
+    
+    if (missingFields.length > 0) {
+        alert('Please fill in all required fields: ' + missingFields.join(', '));
+        return;
+    }
+    
+    // Check if patient ID already exists
+    const patientId = formData.get('patient_id').toUpperCase();
+    const existingPatient = patientsData.find(p => p.patient_id.toUpperCase() === patientId);
+    
+    if (existingPatient) {
+        alert('Patient ID already exists. Please use a different ID.');
+        return;
+    }
+    
+    // Create new patient object
+    const newPatient = {
+        patient_id: patientId,
+        name: formData.get('name').trim(),
+        age: parseInt(formData.get('age')),
+        blood_group: formData.get('blood_group'),
+        department: formData.get('department'),
+        address: formData.get('address').trim(),
+        past_history: formData.get('past_history')?.trim() || 'No significant medical history',
+        bp: formData.get('bp')?.trim() || 'Not recorded',
+        spo2: formData.get('spo2')?.trim() || 'Not recorded',
+        pr: formData.get('pr')?.trim() || 'Not recorded',
+        temperature: formData.get('temperature')?.trim() || 'Not recorded',
+        nurse_note: formData.get('nurse_note')?.trim() || 'Initial assessment pending',
+        nurse_name: formData.get('nurse_name')?.trim() || 'Not assigned',
+        doctor_notes: [] // Start with empty doctor notes array
+    };
+    
+    // Add to patients data
+    patientsData.push(newPatient);
+    
+    // Show success message
+    showSuccessMessage(`Patient ${newPatient.name} (${newPatient.patient_id}) has been successfully added to the system.`);
+    
+    // Hide modal
+    hideAddPatientModal();
+    
+    // Optionally display the newly added patient
+    displayPatient(newPatient);
+    
+    console.log('New patient added:', newPatient);
+    console.log('Total patients:', patientsData.length);
+}
+
+// Success message function
+function showSuccessMessage(message) {
+    // Create success message element
+    const successDiv = document.createElement('div');
+    successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 max-w-sm';
+    successDiv.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-3"></i>
+            <div>
+                <h4 class="font-semibold">Success!</h4>
+                <p class="text-sm">${message}</p>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        if (successDiv.parentNode) {
+            successDiv.parentNode.removeChild(successDiv);
+        }
+    }, 5000);
+}
+
+// Auto-generate next patient ID
+function generateNextPatientId() {
+    const existingIds = patientsData.map(p => p.patient_id);
+    let maxNum = 0;
+    
+    existingIds.forEach(id => {
+        const match = id.match(/P(\d+)/);
+        if (match) {
+            const num = parseInt(match[1]);
+            if (num > maxNum) {
+                maxNum = num;
+            }
+        }
+    });
+    
+    return `P${String(maxNum + 1).padStart(3, '0')}`;
+}
+
+// Set suggested patient ID when modal opens
+addPatientBtn.addEventListener('click', function() {
+    setTimeout(() => {
+        const suggestedId = generateNextPatientId();
+        document.getElementById('newPatientId').value = suggestedId;
+    }, 100);
+});
+
